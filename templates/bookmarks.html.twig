@@ -2,6 +2,80 @@
 
  {% block body %}
 
+     <div class="ui segment">
+         <div class="ui input" style="width: 80%;">
+             <input type="text" name="newUrl" id="newUrl" placeholder="New url...">
+             <i class="plus icon big link" id="addUrl"></i>
+         </div>
+
+
+     </div>
+
+
+     <a href="{{ path('edit_url') }}" style="display: none;" id="urlEdit"></a>
+     <a href="{{ path('delete_url') }}" style="display: none;" id="urlDelete"></a>
+     <a href="{{ path('add_url') }}" style="display: none;" id="urlAdd"></a>
+
+
+     <table id="datosGestion" class="ui celled table responsive nowrap" style="width:100%">
+         <thead>
+         <tr>
+             <th>Action</th>
+             <th>Bookmark</th>
+             <th>Date</th>
+             <th>Share</th>
+         </tr>
+         </thead>
+         <tbody>
+
+         {% for Bookmarks in valor %}
+             <tr>
+                 <td>
+                     <div id="actions_{{ Bookmarks.id }}">
+
+                         <a href="#" id="editUrl_{{ Bookmarks.id }}" title="Edit">
+                             <i class="edit icon large"></i>
+                         </a>
+                         <a href="#" id="deleteUrl_{{ Bookmarks.id }}" title="Delete">
+                             <i class="trash icon large "></i>
+                         </a>
+                     </div>
+
+                 </td>
+                 <td><label id="url_{{ Bookmarks.id }}">{{ Bookmarks.url }}</label></td>
+                 <td>{{ "now"|date("Y-m-d") }}</td>
+                 <td>
+                     <div id="share_{{ Bookmarks.id }}">
+
+                         <a href="#" id="shareFacebook_{{ Bookmarks.id }}" title="Share facebook">
+                             <i class="facebook large icon"></i>
+                         </a>
+                         <a href="#" target="_blank" id="shareTwitter_{{ Bookmarks.id }}" title="Share twitter">
+                             <i class="twitter large icon"></i>
+                         </a>
+                     </div>
+                 </td>
+             </tr>
+         {% endfor %}
+         </tbody>
+     </table>
+
+
+     {#MODAL ELIMINAR #}
+     <div class="ui modal deleteBookmark" style="width: 50%;">
+         <i class="close icon"></i>
+         <div class="header">
+             Delete bookmark
+         </div>
+         <div class="ui input" style="margin-left: 5%; width: 90%;">
+             Are you sure?
+         </div>
+         <div class="actions">
+             <div class="ui cancel button">Cancel</div>
+             <div class="ui approve button">OK</div>
+         </div>
+     </div>
+
 
  {% endblock %}
 

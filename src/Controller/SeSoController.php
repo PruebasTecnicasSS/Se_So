@@ -64,5 +64,27 @@ class SeSoController extends Controller
         return $this->render('/bookmarks.html.twig', array('bookmarks' => $aBookmarks));
     }
 
+    /**
+     * @param $url
+     * @return string
+     */
+    private function twitterling($url){
+
+        $title = 'Title here';
+        $short_url = 'http://shorturl.co';
+        $url = 'http://fullurl.com';
+
+        $twitter_params =
+            '?text=' . urlencode($title) . '+-' .
+            '&amp;url=' . urlencode($short_url) .
+            '&amp;counturl=' . urlencode($url) .
+            '';
+
+
+        $link = "http://twitter.com/share" . $twitter_params . "";
+
+        return $link;
+    }
+
 
 }
