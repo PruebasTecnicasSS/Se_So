@@ -30,7 +30,7 @@ $(document).ready(function () {
 
 
 /** open modal **/
-function abrirDialogoModal(claseDelModal, callbackAccept, callbackDeny) {
+function openModal(claseDelModal, callbackAccept, callbackDeny) {
 
     callbackDeny = typeof callbackDeny === 'undefined' ? function () {
         $("." + claseDelModal).modal('hide');

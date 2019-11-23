@@ -27,41 +27,15 @@ use App\Orm\basicORM;
  */
 class SeSoController extends Controller
 {
-    /**
-     * @Route("/inicio")
-     */
-    public function number()
-    {
-        $number = random_int(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
-    }
-
 
     /**
-     * @Route("/inicio")
-     */
-    public function indexAction()
-    {
-        $number = random_int(0, 100);
-
-        return new Response(
-            '<html><body>Lucky number: '.$number.'</body></html>'
-        );
-    }
-
-    /**
-     * @Route("/bookmarks", name="obtener_bookmarks")
+     * @Route("/", name="obtener_bookmarks")
      *
      */
     public function bookmarksAction(Request $request, basicORM $ORM, EntityManagerInterface $entityManager)
     {
 
         $aBookmarks = $ORM->getBookmarks($entityManager);
-
-
 
         return $this->render('/bookmarks.html.twig', array('data' => $aBookmarks));
     }

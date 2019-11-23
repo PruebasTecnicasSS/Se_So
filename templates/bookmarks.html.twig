@@ -61,7 +61,7 @@
      </table>
 
 
-     {#MODAL ELIMINAR #}
+     {# delete modal #}
      <div class="ui modal deleteBookmark" style="width: 50%;">
          <i class="close icon"></i>
          <div class="header">
@@ -76,6 +76,26 @@
          </div>
      </div>
 
+     {# edit modal #}
+     <div class="ui modal editBookmark" style="width: 50%;">
+         <i class="close icon"></i>
+         <div class="header">
+             Edit bookmark
+         </div>
+         <div class="ui input" style="margin-left: 5%; width: 90%;">
+             <input type="text" name="editUrlInput" id="editUrlInput" >
+         </div>
+         <div class="actions">
+             <div class="ui cancel button">Cancel</div>
+             <div class="ui approve button">OK</div>
+         </div>
+     </div>
+
+     {% include  "comun.html.twig" %}
 
  {% endblock %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/bookmark.js') }}"></script>
+{% endblock %}
 
