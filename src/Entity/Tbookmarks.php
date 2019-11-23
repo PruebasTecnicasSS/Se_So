@@ -35,6 +35,17 @@ class Tbookmarks
      */
     private $url;
 
+
+    /**
+     * @var string
+     */
+    private $twitterLink;
+
+    /**
+     * @var string
+     */
+    private $facebookLink;
+
     /**
      * @return int
      */
@@ -83,9 +94,61 @@ class Tbookmarks
         $this->url = $url;
     }
 
+    /**
+     * @return string
+     */
+    public function getTwitterLink(): string
+    {
+        $this->twitterLink = $this->twitterling($this->getUrl());
+
+        return $this->twitterLink;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFacebookLink(): string
+    {
+        $this->facebookLink = $this->facebookLink($this->getUrl());
+
+        return $this->facebookLink;
+    }
 
 
+    /**
+     * @param $url
+     * @return string
+     */
+    private function twitterling($url)
+    {
 
+        $title     = 'Title here';
+        $short_url = $url;
+        $url       = $url;
+
+        $twitter_params =
+            '?text='.urlencode($title).'+-'.
+            '&amp;url='.urlencode($short_url).
+            '&amp;counturl='.urlencode($url).
+            '';
+
+
+        $link = "http://twitter.com/share".$twitter_params."";
+
+        return $link;
+    }
+
+    /**
+     * @param $url
+     * @return string
+     */
+    private function facebookLink($url)
+    {
+
+        $link = "https://www.facebook.com/sharer.php?u=".$url."&t=TEst";
+
+        return $link;
+    }
 
 
 }

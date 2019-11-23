@@ -12,14 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-
 use Doctrine\ORM\EntityManagerInterface;
-use Doctrine\Common\Util\Debug;
-use Doctrine\ORM;
-
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-
 use App\Orm\basicORM;
 
 /**
@@ -103,30 +96,6 @@ class SeSoController extends Controller
         } else {
             return new Response($sError, Response::HTTP_INTERNAL_SERVER_ERROR);
         }
-    }
-
-
-    /**
-     * @param $url
-     * @return string
-     */
-    private function twitterling($url)
-    {
-
-        $title     = 'Title here';
-        $short_url = 'http://shorturl.co';
-        $url       = 'http://fullurl.com';
-
-        $twitter_params =
-            '?text='.urlencode($title).'+-'.
-            '&amp;url='.urlencode($short_url).
-            '&amp;counturl='.urlencode($url).
-            '';
-
-
-        $link = "http://twitter.com/share".$twitter_params."";
-
-        return $link;
     }
 
 
