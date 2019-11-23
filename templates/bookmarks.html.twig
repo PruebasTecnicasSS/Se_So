@@ -6,8 +6,10 @@
          <div class="ui input" style="width: 80%;">
              <input type="text" name="newUrl" id="newUrl" placeholder="New url...">
              <i class="plus icon big link" id="addUrl"></i>
+             <a href="{{ path('export_url') }}" target="_blank" title="XML export">
+                 <i class="file big code icon link" id="exportXML"></i>
+             </a>
          </div>
-
 
      </div>
 
@@ -30,7 +32,7 @@
 
          {% for Bookmarks in data %}
              <tr>
-                 <td>
+                 <td>{# colum for manage#}
                      <div id="actions_{{ Bookmarks.id }}">
 
                          <a href="#" id="editUrl_{{ Bookmarks.id }}" title="Edit">
@@ -42,9 +44,15 @@
                      </div>
 
                  </td>
-                 <td><label id="url_{{ Bookmarks.id }}">{{ Bookmarks.url }}</label></td>
-                 <td>{{ "now"|date("Y-m-d") }}</td>
-                 <td>
+
+                 <td>{#colum for data#}
+                     <a href="{{ Bookmarks.url }}" target="_blank">{{ Bookmarks.url }}</a>
+                     <label id="url_{{ Bookmarks.id }}" style="display: none">{{ Bookmarks.url }}</label>
+                 </td>
+                 <td>{#colum for date#}
+                     {{ Bookmarks.date|date("Y-m-d") }}
+                 </td>
+                 <td>{#colum for share#}
                      <div id="share_{{ Bookmarks.id }}">
 
                          <a href="{{ Bookmarks.facebookLink }}" id="shareFacebook_{{ Bookmarks.id }}" title="Share facebook">
