@@ -11,7 +11,16 @@ namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\Common\Util\Debug;
+use Doctrine\ORM;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+
+use App\Orm\basicORM;
 
 /**
  * @Route("/")
@@ -42,4 +51,18 @@ class SeSoController extends Controller
             '<html><body>Lucky number: '.$number.'</body></html>'
         );
     }
+
+    /**
+     * @Route("/bookmarks", name="obtener_bookmarks")
+     *
+     */
+    public function bookmarksAction(Request $request, basicORM $ORM, EntityManagerInterface $entityManager)
+    {
+
+        $aBookmarks  = $ORM->getBookmarks($entityManager);
+
+        return $this->render('/bookmarks.html.twig', array('bookmarks' => $aBookmarks));
+    }
+
+
 }
