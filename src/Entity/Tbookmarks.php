@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
 
 
@@ -31,7 +33,7 @@ class Tbookmarks
      *
      * @ORM\Column(name="url", type="string", length=255, nullable=false)
      */
-    private $horainicio;
+    private $url;
 
     /**
      * @return int
@@ -68,18 +70,20 @@ class Tbookmarks
     /**
      * @return null|string
      */
-    public function getHorainicio()
+    public function getUrl(): ?string
     {
-        return $this->horainicio;
+        return $this->url;
     }
 
     /**
-     * @param null|string $horainicio
+     * @param null|string $url
      */
-    public function setHorainicio($horainicio)
+    public function setUrl(?string $url): void
     {
-        $this->horainicio = $horainicio;
+        $this->url = $url;
     }
+
+
 
 
 

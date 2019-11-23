@@ -64,6 +64,29 @@ class SeSoController extends Controller
         return $this->render('/bookmarks.html.twig', array('bookmarks' => $aBookmarks));
     }
 
+
+    /**
+     * @Route("/editUrl", name="edit_url")
+     *
+     */
+    public function editUrl(Request $request, basicORM $ORM, EntityManagerInterface $entityManager)
+    {
+
+        $aUrlParam = $request->request->all();
+        $sError = '';
+
+        $bSaveUrl = $ORM->saveUrl($entityManager, $aUrlParam, $sError);
+
+        if ($bSaveUrl) {
+            return new Response('OK', Response::HTTP_OK);
+        } else {
+            return new Response($sError, Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
+
+
     /**
      * @param $url
      * @return string
